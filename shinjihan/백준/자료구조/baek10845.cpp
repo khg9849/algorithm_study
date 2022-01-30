@@ -1,6 +1,6 @@
 /*#include <iostream>
 #include <string>
-#include <stack>
+#include <queue>
 
 using namespace std;
 
@@ -9,7 +9,7 @@ int main() {
 	int n;
 	cin >> n;
 
-	stack<int> stack;
+	queue<int> q;
 	string str;
 
 	int input = 0;
@@ -17,23 +17,23 @@ int main() {
 		cin >> str;
 		if (str.compare("push") == 0) {
 			cin >> input;
-			stack.push(input);
+			q.push(input);
 		}
 		else if (str.compare("pop") == 0) {
-			if (stack.empty()) {
+			if (q.empty()) {
 				cout << "-1" << endl;
 			}
 			else
 			{
-				cout << stack.top() << endl;
-				stack.pop();
+				cout << q.front() << endl;
+				q.pop();
 			}
 		}
 		else if (str.compare("size") == 0) {
-			cout << stack.size() << endl;
+			cout << q.size() << endl;
 		}
 		else if (str.compare("empty") == 0) {
-			if (stack.empty()) {
+			if (q.empty()) {
 				cout << "1" << endl;
 			}
 			else
@@ -41,13 +41,22 @@ int main() {
 				cout << "0" << endl;
 			}
 		}
-		else if (str.compare("top") == 0) {
-			if (stack.empty()) {
+		else if (str.compare("front") == 0) {
+			if (q.empty()) {
 				cout << "-1" << endl;
 			}
 			else
 			{
-				cout << stack.top() << endl;
+				cout << q.front() << endl;
+			}
+		}
+		else if (str.compare("back") == 0) {
+			if (q.empty()) {
+				cout << "-1" << endl;
+			}
+			else
+			{
+				cout << q.back() << endl;
 			}
 		}
 
