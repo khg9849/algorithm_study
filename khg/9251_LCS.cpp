@@ -10,12 +10,12 @@ using std::string;
 
 int main() {
 
-	string A;
-	string B;
-	cin >> A >> B;
+	string Array_A;
+	string Array_B;
+	cin >> Array_A >> Array_B;
 	
-	int m = A.length();
-	int n = B.length();
+	int m = Array_A.length();
+	int n = Array_B.length();
 
 	int** dp = new int* [m];
 	for (int i = 0; i < m; i++) {
@@ -25,7 +25,7 @@ int main() {
 
 	for (int i = 0; i < m; i++) {
 		for (int j = 0; j < n; j++) {
-			if (A[i] != B[j]) {
+			if (Array_A[i] != Array_B[j]) {
 				if (i == 0) {
 					dp[i][j + 1] = dp[i][j];
 				}
@@ -47,6 +47,33 @@ int main() {
 			}
 		}
 	}
+
+
+	for (int i = 0; i < m; i++) {
+		for (int j = 0; j < n; j++) {
+			if (Array_A[i] != Array_B[j]) {
+				if (i == 0) {
+					dp[i][j + 1] = dp[i][j];
+				}
+				else {
+					if (dp[i][j] < dp[i - 1][j + 1]) {
+						dp[i][j + 1] = dp[i - 1][j + 1];
+					}
+					else
+						dp[i][j + 1] = dp[i][j];
+				}
+			}
+			else {
+				if (i == 0) {
+					dp[i][j + 1] = 1;
+				}
+				else {
+					dp[i][j + 1] = dp[i - 1][j] + 1;
+				}
+			}
+		}
+	}
+
 	
 	cout << dp[m - 1][n];
 
