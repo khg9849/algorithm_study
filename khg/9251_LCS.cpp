@@ -10,12 +10,12 @@ using std::string;
 
 int main() {
 
-	string Array_A;
-	string Array_B;
-	cin >> Array_A >> Array_B;
+	string Array;
+	string Brray;
+	cin >> Array >> Brray;
 	
-	int m = Array_A.length();
-	int n = Array_B.length();
+	int m = Array.length();
+	int n = Brray.length();
 
 	int** dp = new int* [m];
 	for (int i = 0; i < m; i++) {
@@ -25,7 +25,7 @@ int main() {
 
 	for (int i = 0; i < m; i++) {
 		for (int j = 0; j < n; j++) {
-			if (Array_A[i] != Array_B[j]) {
+			if (Array[i] != Brray[j]) {
 				if (i == 0) {
 					dp[i][j + 1] = dp[i][j];
 				}
@@ -51,7 +51,7 @@ int main() {
 
 	for (int i = 0; i < m; i++) {
 		for (int j = 0; j < n; j++) {
-			if (Array_A[i] != Array_B[j]) {
+			if (Array[i] != Brray[j]) {
 				if (i == 0) {
 					dp[i][j + 1] = dp[i][j];
 				}
