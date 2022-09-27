@@ -14,18 +14,22 @@ int main() {
 	string Brray;
 	cin >> Array >> Brray;
 	
-	int m = Array.length();
-	int n = Brray.length();
 
-	int** dp = new int* [m];
-	for (int i = 0; i < m; i++) {
-		dp[i] = new int[n+1];
+	int num1 = Array.length();
+	int num2 = Brray.length();
+
+
+	int** dp = new int* [num1];
+	for (int i = 0; i < num1; i++) {
+		dp[i] = new int[num2+1];
 		dp[i][0] = 0;
 	}
 
-	for (int i = 0; i < m; i++) {
-		for (int j = 0; j < n; j++) {
-			if (Array[i] != Brray[j]) {
+
+	for (int i = 0; i < num1; i++) {
+		for (int j = 0; j < num2; j++) {
+			if (Array_A[i] != Array_B[j]) {
+
 				if (i == 0) {
 					dp[i][j + 1] = dp[i][j];
 				}
@@ -49,9 +53,10 @@ int main() {
 	}
 
 
-	for (int i = 0; i < m; i++) {
-		for (int j = 0; j < n; j++) {
-			if (Array[i] != Brray[j]) {
+
+	for (int i = 0; i < num1; i++) {
+		for (int j = 0; j < num2; j++) {
+			if (Array_A[i] != Array_B[j]) {
 				if (i == 0) {
 					dp[i][j + 1] = dp[i][j];
 				}
@@ -75,7 +80,7 @@ int main() {
 	}
 
 	
-	cout << dp[m - 1][n];
+	cout << dp[num1 - 1][num2];
 
 	return 0;
 }
