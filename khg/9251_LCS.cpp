@@ -14,17 +14,17 @@ int main() {
 	string Array_B;
 	cin >> Array_A >> Array_B;
 	
-	int m = Array_A.length();
-	int n = Array_B.length();
+	int num1 = Array_A.length();
+	int num2 = Array_B.length();
 
-	int** dp = new int* [m];
-	for (int i = 0; i < m; i++) {
-		dp[i] = new int[n+1];
+	int** dp = new int* [num1];
+	for (int i = 0; i < num1; i++) {
+		dp[i] = new int[num2+1];
 		dp[i][0] = 0;
 	}
 
-	for (int i = 0; i < m; i++) {
-		for (int j = 0; j < n; j++) {
+	for (int i = 0; i < num1; i++) {
+		for (int j = 0; j < num2; j++) {
 			if (Array_A[i] != Array_B[j]) {
 				if (i == 0) {
 					dp[i][j + 1] = dp[i][j];
@@ -49,8 +49,8 @@ int main() {
 	}
 
 
-	for (int i = 0; i < m; i++) {
-		for (int j = 0; j < n; j++) {
+	for (int i = 0; i < num1; i++) {
+		for (int j = 0; j < num2; j++) {
 			if (Array_A[i] != Array_B[j]) {
 				if (i == 0) {
 					dp[i][j + 1] = dp[i][j];
@@ -75,7 +75,7 @@ int main() {
 	}
 
 	
-	cout << dp[m - 1][n];
+	cout << dp[num1 - 1][num2];
 
 	return 0;
 }
